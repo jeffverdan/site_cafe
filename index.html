@@ -1,386 +1,193 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site Café</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      color: #1f1209;
-      background: #fff;
-      line-height: 1.6;
-    }
+  <title>Streetme Coffee</title>
 
-    a { text-decoration: none; }
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
-    h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: 0.02em; }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .hero {
-      position: relative;
-      background: url('assets/streetme-21-1.jpg') center/cover no-repeat;
-      height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
-    }
-
-    .hero-content {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .hero h1 { font-size: 34px; letter-spacing: 0.1em; }
-    .hero p { font-size: 18px; font-weight: 500; }
-
-    .contact-strip {
-      background: #f5f2ed;
-      padding: 28px 0;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    }
-
-    .contact-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      align-items: center;
-      justify-items: center;
-      text-align: center;
-      font-weight: 500;
-      color: #3a2a1b;
-    }
-
-    .franchise {
-      background: #120b07;
-      color: #f5f0e8;
-      padding: 70px 0 40px;
-      text-align: center;
-    }
-
-    .franchise h2 { font-size: 26px; margin-bottom: 18px; }
-
-    .form-links {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .form-links a {
-      background: #fff;
-      color: #1a1a1a;
-      border-radius: 4px;
-      padding: 14px 18px;
-      font-weight: 600;
-      font-size: 13px;
-      border: 1px solid #e6e2da;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .form-links a:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.25); }
-
-    .franchise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 26px;
-      width: 92%;
-      max-width: 1100px;
-      margin: 0 auto 28px;
-    }
-
-    .franchise-card {
-      background: #fff;
-      color: #2a2016;
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    .franchise-card img { width: 100%; height: 180px; object-fit: cover; }
-    .franchise-card p { margin: 12px 14px 20px; font-weight: 600; letter-spacing: 0.05em; }
-
-    .franchise .cta {
-      background: #b78237;
-      color: #1c1106;
-      padding: 14px 20px;
-      border-radius: 4px;
-      display: inline-block;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    }
-
-    .statement {
-      padding: 50px 0 20px;
-      text-align: center;
-      font-size: 22px;
-      color: #1f1209;
-    }
-
-    .video-section {
-      background: #0b0b0b;
-      color: #f8f8f8;
-      text-align: center;
-      padding: 50px 0 70px;
-    }
-
-    .video-section h2 { font-size: 22px; font-weight: 700; }
-
-    .video-wrapper {
-      position: relative;
-      width: 90%;
-      max-width: 1100px;
-      margin: 20px auto 0;
-      padding-top: 56.25%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .farm {
-      padding: 70px 0 40px;
-      background: #fff;
-    }
-
-    .farm .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .farm-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 18px;
-      background: #fff;
-      border: 1px solid #eee5da;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
-
-    .farm-card img { width: 100%; height: 100%; object-fit: cover; }
-
-    .farm-card .content { padding: 28px; }
-    .farm-card .content h3 { font-size: 22px; margin-bottom: 12px; }
-    .farm-card .content p { font-size: 15px; color: #4a3827; line-height: 1.7; }
-
-    .life {
-      background: #f6f6f6;
-      padding: 50px 0;
-      text-align: center;
-    }
-
-    .life h2 { font-size: 22px; margin-bottom: 24px; }
-
-    .life .columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      width: 90%;
-      margin: 0 auto 18px;
-    }
-
-    .quote-box {
-      background: #fff;
-      padding: 26px;
-      text-align: left;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
-      min-height: 190px;
-    }
-
-    .quote-box strong { display: block; margin-bottom: 10px; color: #2c1a0f; }
-    .quote-box p { margin: 0; color: #4d3828; }
-
-    .contact {
-      padding: 40px 0 80px;
-      background: #f5f5f5;
-    }
-
-    .contact .form-wrapper {
-      background: #fff;
-      width: 90%;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 24px 20px 32px;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.15);
-      border-radius: 6px;
-    }
-
-    .contact .form-wrapper h3 { text-align: center; margin-bottom: 16px; }
-
-    form { display: grid; gap: 12px; }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #e1d7cb;
-      border-radius: 3px;
-      font-family: inherit;
-      font-size: 14px;
-    }
-
-    textarea { resize: vertical; min-height: 120px; }
-
-    button[type="submit"] {
-      background: #a0682e;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    button[type="submit"]:hover { background: #8e5a27; }
-
-    @media (max-width: 900px) {
-      .farm-card { grid-template-columns: 1fr; }
-      .hero { height: 420px; }
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header class="hero">
-    <div class="hero-content">
-      <h1>GRUPO STREETME.</h1>
-      <p>Cafés Brasileiros &amp; Urbanos.</p>
+  <!-- HEADER FIXO -->
+  <header class="top-header">
+    <div class="header-container">
+
+      <!-- LOGO -->
+      <div class="header-logo">
+        <img src="./assets/logo-fundo-branco.png" alt="Streetme Coffee">
+      </div>
+
+      <!-- NAV -->
+      <nav class="header-nav">
+        <a href="#home">Home</a>
+        <a href="menu.html">Menu Cafeterias</a>
+        <a href="#franqueado" class="highlight">Seja um Franqueado</a>
+      </nav>
+
     </div>
   </header>
 
-  <section class="contact-strip">
-    <div class="container contact-items">
-      <div>@streetmecoffee</div>
-      <div>(61) 11 5596 8337</div>
-      <div>@streetmecoffee</div>
-      <div>(61) 11 5596 8337</div>
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <h1>GRUPO STREETME.</h1>
+      <p>O café que te move, a experiência que te conecta.</p>
+    </div>
+  </header>
+
+  <!-- LOGO + INTRO -->
+  <section class="intro">
+    <img src="./assets/logo-fundo-branco.png" class="logo" alt="Streetme Coffee">
+    <p class="intro-text">
+      CONHEÇA AS FRANQUIAS STREETME COFFEE E
+    <p class="intro-text orange">#APAIXONE-SE.</p>
+    </p>
+  </section>
+
+  <!-- FRANQUIAS -->
+  <section class="franquias" id="franqueado">
+    <h2>STREETME COFFEE <span>FRANQUIAS</span></h2>
+    <p class="subtitle">As franquias Streetme Coffee entregam experiências para os #coffeelovers.</p>
+
+    <div class="reveal franquias-grid">
+      <div class="">
+        <img src="./assets/franquia_1.jpg" alt="">
+        <p>PRATICIDADE</p>
+      </div>
+      <div class="">
+        <img src="./assets/franquia_2.jpg" alt="">
+        <p>INCRÍVEL STORE</p>
+      </div>
+      <div class="">
+        <img src="./assets/franquia_3.jpg" alt="">
+        <p>CAFÉS ESPECIAIS</p>
+      </div>
+      <div class="">
+        <img src="./assets/franquia_4.jpg" alt="">
+        <p>EXPERIÊNCIA</p>
+      </div>
     </div>
   </section>
 
-  <section class="franchise">
-    <h2>STREETME COFFEE FRANQUIAS</h2>
-    <div class="form-links">
-      <a href="#">FORMULÁRIO DE ATENDIMENTO FRANQUIA</a>
-      <a href="#">FORMULÁRIO DE CONTATO FRANQUIA</a>
+  <section class="lojas reveal">
+    <h3>Confira as novidades em nossas lojas (Instagram)</h3>
+    <div class="links-lojas">
+      <a href="https://www.instagram.com/streetme.emiliano/">Streetme Curitiba</a> -
+      <a href="https://www.instagram.com/streetme.floripa/">Streetme Florianópolis</a> -
+      <a href="https://www.instagram.com/streetme.avlins/">Streetme São Paulo</a>
     </div>
 
-    <div class="franchise-grid">
-      <div class="franchise-card">
-        <img src="assets/cappuccino-streetme.png" alt="Cappuccino">
-        <p>CAFFÈ LATTE</p>
-      </div>
-      <div class="franchise-card">
-        <img src="assets/americano---copia.png" alt="Americano">
-        <p>ESPRESSO, LATTE E CAPPUCINO</p>
-      </div>
-      <div class="franchise-card">
-        <img src="assets/shake.png" alt="Shake">
-        <p>CAFFÈ LATTE E CAPPUCCINO</p>
-      </div>
-      <div class="franchise-card">
-        <img src="assets/coffee-vanilla.png" alt="Vanilla Coffee">
-        <p>COFFEE VANILLA</p>
-      </div>
-    </div>
-
-    <a class="cta" href="#">FALE CONOSCO</a>
+    <a class="btn reveal" href="#">MENU CAFETERIAS</a>
   </section>
 
-  <section class="statement">
-    <p>UM CAFÉ URBANO NO MELHOR ESTILO #COFFEETYOU</p>
-  </section>
+  <!-- CAFÉS -->
+  <section class="cafes">
+    <h3 class="reveal">UM CAFÉ URBANO NO MELHOR ESTILO <span>#COFFEETOYOU</span></h3>
+    <p class="reveal">Receitas autorais com cafés especiais.<br /> Cafés quentes, gelados, chás, chocolate e uma
+      incrível
+      lojinha.</p>
 
-  <section class="video-section">
-    <h2>DA FAZENDA PARA SUA XÍCARA!</h2>
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/AFBKooNDpy4" title="Streetme" allowfullscreen></iframe>
-    </div>
-  </section>
-
-  <section class="farm">
-    <div class="grid">
-      <div class="farm-card">
-        <img src="assets/dsc07141.jpg" alt="Fazenda">
-        <div class="content">
-          <h3>FAZENDA SÃO BENEDITO</h3>
-          <p>O STREETME trabalha com café vindo da Fazenda São Benedito, localizada na região Mantiqueira, Minas Gerais. Com fazendas distribuídas na região alta e baixa, conseguimos tirar proveito das diferentes altitudes e microclimas para elaborar perfis únicos e exclusivos.</p>
+    <div class="cafes-grid">
+      <div class="reveal">
+        <img src="./assets/cafe-black.png" alt="">
+        <p>CAFÉS BLACK</p>
+      </div>
+      <div class="reveal">
+        <img src="./assets/café-gelado.png" alt="">
+        <p>CLÁSSICOS GELADOS</p>
+      </div>
+      <div class="reveal">
+        <img src="./assets/classico-quente.png" alt="">
+        <p>CLÁSSICOS QUENTES</p>
+      </div>
+      <div class="reveal">
+        <div class="img-container">
+          <img src="./assets/shake.png" alt="">
         </div>
-      </div>
-      <div class="farm-card">
-        <div class="content">
-          <h3>CAFÉ EXCLUSIVO</h3>
-          <p>O Streetme tem seu próprio blend elaborado pela Sapori Caffé, 100% arábica e de torra média, proporcionando um café levemente adocicado e sem acidez.</p>
-        </div>
-        <img src="assets/dsc09247.jpg" alt="Blend de café">
+        <p>SHAKES</p>
       </div>
     </div>
   </section>
 
-  <section class="life">
-    <h2>A COFFEE CAN CHANGE YOUR LIFE.</h2>
-    <div class="columns">
-      <div class="quote-box">
-        <strong>Blenda, São Paulo</strong>
-        <p>“Um ambiente super gostoso, aconchegante... e cada cantinho uma nova experiência sensorial! A seleção de cafés especiais é uma atracão a parte... você quer provar todos eles, impossível escolher apenas um!”</p>
-      </div>
-      <div class="quote-box">
-        <strong>Pedro, São Paulo</strong>
-        <p>"O ambiente é relaxante e ainda vem com cafés de primeira e ótimas opções de lanches: livos, revistas e bons cafes num ambiente tranquilo, perfeito para um café a tarde. Tive um ótimo atendimento, voltarei mais vezes."</p>
-      </div>
-      <div class="quote-box">
-        <strong>Pedro, São Paulo</strong>
-        <p>“Ambiente lindo e confortável, boas escolhas musicais, atendimento super atencioso e produtos gostosos.”</p>
-      </div>
+  <!-- VIDEO -->
+  <section class="video">
+    <h3 class="reveal">DA FAZENDA PARA SUA XÍCARA!</h3>
+
+    <div class="video-frame reveal">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/2IjZPw4y2NE?si=DG8nO_7obrHqK1kn"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <!-- <iframe src="https://www.youtube.com/embed/2IjZPw4y2NE?si=W7-apDHEwakvEm39" title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+      <span class="media-laptop-decoration"></span>
     </div>
   </section>
 
-  <section class="contact">
-    <div class="form-wrapper">
-      <h3>Envie-nos sua mensagem</h3>
-      <form>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="name" placeholder="Name" required>
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button type="submit">ENVIAR</button>
-      </form>
+  <!-- FAZENDA -->
+  <section class="fazenda">
+    <h3 class="reveal">FAZENDA SÃO BENEDITO</h3>
+    <p class="reveal">Os cafés da fazenda São Benedito são exclusividade da rede Streetme Coffee.</p>
+    <p class="reveal">Localizada no alto da Serra da Mantiqueira, produz os melhores grãos para cada momento.</p>
+
+    <div class="fazenda-grid">
+      <div class="reveal">
+        <img class="" src="./assets/fazenda_1.jpg" alt="">
+        <p class="">CAFÉS ESPECIAIS</p>
+      </div>
+
+      <div class="reveal">
+        <img class="" src="./assets/fazenda_2.jpg" alt="">
+        <p class="">SUSTENTABILIDADE</p>
+      </div>
+
+      <div class="reveal">
+        <img class="" src="./assets/fazenda_3.jpg" alt="">
+        <p class="">QUALIDADE</p>
+      </div>
+
+      <div class="reveal">
+        <img class="" src="./assets/fazenda_4.jpg" alt="">
+        <p class="">REGIÃO PREMIADA</p>
+      </div>
+
     </div>
   </section>
+
+  <!-- FORM -->
+  <form class="reveal" id="contactForm">
+
+    <label for="name">Nome</label>
+    <input type="text" id="name" name="name" placeholder="Digite seu nome">
+
+    <label for="email">E-mail *</label>
+    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+    <label for="message">Mensagem</label>
+    <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
+
+    <!-- hCaptcha -->
+    <div class="h-captcha" data-sitekey="SEU_SITE_KEY_AQUI"></div>
+
+    <button type="submit">ENVIAR</button>
+  </form>
+
+  <!-- Script oficial do hCaptcha -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+
+  <!-- Vinculando o JavaScript -->
+  <script src="script.js"></script>
 </body>
+
 </html>
